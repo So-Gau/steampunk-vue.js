@@ -8,7 +8,11 @@ module.exports = {
     colors: {
       brown: '#1F1213'
     },
-    extend: {},
+    extend: {
+      width: {
+        '170': "170px",
+      },
+    },
   },
   plugins: [],
 }

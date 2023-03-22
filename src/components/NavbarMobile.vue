@@ -125,9 +125,9 @@ header {
   width: 100%;
   height: 100vh;
   position: absolute;
-  background: #210e02;
+  background: radial-gradient(103.09% 1253.23% at 100% 48.69%, #150900 0%, #151917 99.3%);
     ul {
-        background: #210e02;
+      background: radial-gradient(103.09% 1253.23% at 100% 48.69%, #150900 0%, #151917 99.3%);
         li {
         list-style: none;
         position: relative;
@@ -258,8 +258,6 @@ header {
     ul {
       li {
         padding: 35px 0;
-        a {
-        }
         &:nth-child(1) {
           &::before {
             background-size: cover;
@@ -287,26 +285,6 @@ header {
           &::before {
             background-position: 285px -87px;
             background-size: cover;
-          }
-          &:hover {
-          }
-        }
-        &:nth-child(6) {
-          a {
-          }
-        }
-        &:nth-child(odd) {
-          a {
-          }
-        }
-        &:nth-child(even) {
-          a {
-          }
-        }
-        &:hover {
-          &::before {
-          }
-          a {
           }
         }
       }
