@@ -19,11 +19,11 @@ function clickOpenMenu() {
           <span class="line"></span>
           <span class="line"></span>
         </div>
-        <div id="logo">
+        <div id="logo" class="z-10">
           <router-link :to="{name: 'home' }"><img src="../assets/logo.png"/></router-link>
         </div>
       </header>
-      <nav id="navMobile" :class="{navMobile: true, open: isOpen}">
+      <nav id="navMobile" class="z-50" :class="{navMobile: true, open: isOpen}">
         <ul>
           <li>
             <RouterLink :to="{name: 'heroka'}">Heroka</RouterLink>
@@ -52,9 +52,9 @@ function clickOpenMenu() {
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
 
 header {
-  height: 50px;
+  height: 60px;
+  background-color: #f9f4eb;
   display: flex;
-  align-items: center;
   .mobile-icon {
     display: flex;
     flex-direction: column;
@@ -94,6 +94,8 @@ header {
     }
   }
   #logo {
+    display: flex;
+    align-items: center;
     a {
       margin-left: 10px;
       img {
@@ -109,9 +111,11 @@ header {
 #navMobile {
   transform: translate(100vw);
   transition: all 500ms;
+  display: none;
   &.open {
     transition: all 500ms;
     transform: translate(0vw);
+    display: block;
   }
 }
 
@@ -135,7 +139,7 @@ header {
                 z-index: 1;
                 background: transparent;
                 font-family: "Black Ops One", cursive;
-                color: #391800;
+                color: #ffffff;
                 font-size: 20px;
                 text-transform: capitalize;
                 text-decoration: none;
