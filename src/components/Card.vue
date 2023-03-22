@@ -1,38 +1,34 @@
-<script setup lang="ts">
-    import { reactive } from 'vue';
+<script setup>
+    import { ref } from 'vue';
 
     // objectif stocker les différents personnages dans un tableau, elle doit contenir : l'id, le badge avec url, l'image avec l'url et le nom
-    const charactere = (
+    const charactere = ref([
         {
-            imgEmbleme: "../assets/badge/badge1.png",
+            imgEmbleme: '../assets/badge/badge1.png',
             imgCharactere: "../assets/card/card1.png",
             name: "Heroka",
+        },
+        {
+            imgEmbleme: "../assets/badge/badge2.png",
+            imgCharactere: "../assets/card/card2.png",
+            name: "Selena",
+        },
+        {
+            imgEmbleme: "../assets/badge/badge3.png",
+            imgCharactere: "../assets/card/card3.png",
+            name: "Fantasy",
+        },
+        {
+            imgEmbleme: "../assets/badge/badge4.png",
+            imgCharactere: "../assets/card/card4.png",
+            name: "Clark",
+        },
+        {
+            imgEmbleme: "../assets/badge/badge5.png",
+            imgCharactere: "../assets/card/card.png",
+            name: "Stellar",
         }
-        // {
-        //     imgEmbleme: "../assets/badge/badge2.png",
-        //     imgCharactere: "../assets/card/card2.png",
-        //     name: "Selena",
-        // },
-        // {
-        //     imgEmbleme: "../assets/badge/badge3.png",
-        //     imgCharactere: "../assets/card/card3.png",
-        //     name: "Fantasy",
-        // },
-        // {
-        //     imgEmbleme: "../assets/badge/badge4.png",
-        //     imgCharactere: "../assets/card/card4.png",
-        //     name: "Clark",
-        // },
-        // {
-        //     imgEmbleme: "../assets/badge/badge5.png",
-        //     imgCharactere: "../assets/card/card5.png",
-        //     name: "Stellar",
-        // }
-    );
-    defineProps<{
-        title?: string
-        likes?: number
-    }>()
+    ]);
     console.log(charactere)                   
           
 
@@ -43,8 +39,8 @@
         <!-- <img v-for="charactere in characteres"> -->
         <div class="headerEmbleme flex justify-center items-center">
           /
-            <p v-for="value in charactere">
-                {{ value }}
+            <p v-for="charactere in characteres" :key="charactere.id">
+                {{ charactere.name }}
             </p>
         </div>
         <div class="imgCharactere">
