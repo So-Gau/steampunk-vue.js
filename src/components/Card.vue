@@ -1,50 +1,36 @@
-<script setup>
+<script setup lang="ts">
     import { ref } from 'vue';
 
-    // objectif stocker les différents personnages dans un tableau, elle doit contenir : l'id, le badge avec url, l'image avec l'url et le nom
-    const charactere = ref([
-        {
-            imgEmbleme: '../assets/badge/badge1.png',
-            imgCharactere: "../assets/card/card1.png",
-            name: "Heroka",
+    const props = defineProps({
+        name: {
+            type: String,
+            default: '',
         },
-        {
-            imgEmbleme: "../assets/badge/badge2.png",
-            imgCharactere: "../assets/card/card2.png",
-            name: "Selena",
+        image: {
+            type: String,
+            default: null,
         },
-        {
-            imgEmbleme: "../assets/badge/badge3.png",
-            imgCharactere: "../assets/card/card3.png",
-            name: "Fantasy",
-        },
-        {
-            imgEmbleme: "../assets/badge/badge4.png",
-            imgCharactere: "../assets/card/card4.png",
-            name: "Clark",
-        },
-        {
-            imgEmbleme: "../assets/badge/badge5.png",
-            imgCharactere: "../assets/card/card.png",
-            name: "Stellar",
+        imgBadge: {
+            type: String,
+            default: null,
         }
-    ]);
-    console.log(charactere)                   
-          
+    });
 
+    const bep = 'test';
+    // objectif stocker les différents personnages dans un tableau, elle doit contenir : l'id, le badge avec url, l'image avec l'url et le nom
+                 
+        
 </script>
 
 <template>
     <div class="cardBackground m-auto">
         <!-- <img v-for="charactere in characteres"> -->
         <div class="headerEmbleme flex justify-center items-center">
-          /
-            <p v-for="charactere in characteres" :key="charactere.id">
-                {{ charactere.name }}
-            </p>
+            <img :src="props.imgBadge" alt="">
         </div>
         <div class="imgCharactere">
-            <h1>test</h1>
+            <img :src="props.image" alt="">
+            <h1>{{props.name}}</h1>
             <!-- {charactere.charactere.img} -->
             <!-- {charactere.name} -->
         </div>
