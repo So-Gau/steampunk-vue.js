@@ -3,7 +3,6 @@
     import { register } from 'swiper/element/bundle';
 
     register();
-
         const spaceBetween = 10;
         const onProgress = (e) => {
         const [swiper, progress] = e.detail;

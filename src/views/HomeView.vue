@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import Card from "../components/Card.vue";
+  import Slide from "../components/Slide.vue";
   import { ref } from 'vue';
   import card5 from '@/assets/card/card5.png';
   import card4 from '@/assets/card/card4.png';
@@ -83,6 +84,9 @@
           </li>
         </ul>
       </div>
+      <div class="containerSlide">
+        <Slide />
+      </div>
     </section>
   </div>
 
@@ -129,7 +133,7 @@
   #containerSlide {
     .containerCharactere {
       background: radial-gradient(103.09% 1253.23% at 100% 48.69%, #150900 0%, #151917 99.3%);
-      padding: 50px 0;
+      padding-top: 120px;
     }
 
   }
