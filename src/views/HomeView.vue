@@ -76,16 +76,16 @@
         <img src="../assets/fond.png" alt="">
       </div>
     </section>
-    <section id="containerSlide">
+    <section id="characteres">
       <div class="containerCharactere">
         <ul>
           <li v-for="charactere in characteres">
-            <Card :name="charactere.name" :image="charactere.imgCharactere" :imgBadge="charactere.imgEmbleme" />
+            <Card :id="charactere.id" :name="charactere.name" :image="charactere.imgCharactere" :imgBadge="charactere.imgEmbleme" />
           </li>
         </ul>
       </div>
       <div class="containerSlide">
-        <Slide />
+        <Slide v-bind:name="" />
       </div>
     </section>
   </div>
@@ -130,11 +130,13 @@
       }
     }
   }
-  #containerSlide {
+  #characteres {
+    background: radial-gradient(103.09% 1253.23% at 100% 48.69%, #150900 0%, #151917 99.3%);
     .containerCharactere {
-      background: radial-gradient(103.09% 1253.23% at 100% 48.69%, #150900 0%, #151917 99.3%);
       padding-top: 120px;
     }
-
+    .containerSlide {
+          margin-top: 85px;
+    }
   }
 </style>

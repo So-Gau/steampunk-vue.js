@@ -1,7 +1,9 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
 
     const props = defineProps({
+        id: {
+            type: Number,
+        },
         name: {
             type: String,
             default: '',
@@ -14,12 +16,7 @@
             type: String,
             default: null,
         }
-    });
-
-    const bep = 'test';
-    // objectif stocker les différents personnages dans un tableau, elle doit contenir : l'id, le badge avec url, l'image avec l'url et le nom
-                 
-        
+    }); 
 </script>
 
 <template>
