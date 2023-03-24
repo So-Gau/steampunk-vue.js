@@ -54,13 +54,17 @@ console.log(handleSlideChange)
         <div class="skillHeader">
             <h3>{{ data.skill }}</h3>
         </div>
-        <div class="synopsis">
-            <h2>{{ data.name }}</h2>
-            <p>
-                {{ data.description }}
-            </p>
+        <div class="contentCard">
+            <div class="synopsis">
+                <h2>{{ data.name }}</h2>
+                <p>
+                    {{ data.description }}
+                </p>
+            </div>
+            <div class="text-center">
+                <router-link :to="data.url">Mon Histoire</router-link>
+            </div>
         </div>
-        <router-link :to="data.url">Mon histoire</router-link>
     </swiper-slide>
   </swiper>
 </template>
@@ -92,6 +96,18 @@ console.log(handleSlideChange)
     &::v-deep(.swiper-pagination) {
         position: relative;
         bottom: -6px;
+        .swiper-pagination-bullet {
+            border: 1px solid #ffe9cf;
+            background: #150900;
+            opacity: 1;
+            width: var(--swiper-pagination-bullet-width,var(--swiper-pagination-bullet-size,10px));
+            height: var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,10px));
+            margin: 0 var(--swiper-pagination-bullet-horizontal-gap,8px);
+    
+        }
+        .swiper-pagination-bullet-active {
+            background: linear-gradient(180deg, #EDB571 0%, #42312C 100%);
+        }
     }
 }
 .swiper-slide {
@@ -129,27 +145,42 @@ console.log(handleSlideChange)
             margin-left: 5px;
         }
     }
-    .synopsis {
-        font-family: 'Cormorant';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
-        color: #FFE9CF;
-        h2 {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-family: 'Cinzel';
+    .contentCard {
+        display: flex;
+        flex-direction: column;
+        height: 285px;
+        align-items: center;
+        justify-content: space-between;
+        .synopsis {
+            font-family: 'Cormorant';
             font-style: normal;
-            font-weight: 700;
-            font-size: 28px;
-            line-height: 38px;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 19px;
             color: #FFE9CF;
+            h2 {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 15px;
+                font-family: 'Cinzel';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 28px;
+                line-height: 38px;
+                color: #FFE9CF;
+            }
+            p {
+                width: 80%;
+                margin: auto;
+            }
         }
-        p {
-            width: 80%;
-            margin: auto;
+        a {
+            background: linear-gradient(180deg, rgba(66, 49, 44, 0.8) 0%, rgba(9, 4, 5, 0.8) 100%);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+            padding: 9px;
+            border: 1px solid #FDCC91;
+            color: #FFE9CF;
         }
     }
 }

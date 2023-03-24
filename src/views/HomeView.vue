@@ -29,7 +29,7 @@
           imgCharactere: card2,
           skill: "Mage",
           name: "Selena",
-          description: 'Lorem ipsum ',
+          description: 'Lorem ipsum tes tes test eswt este testssdsd',
           url: "/Selena",
         },
         {
@@ -156,7 +156,8 @@
       padding-top: 120px;
     }
     .containerSlide {
-          margin-top: 20px;
+      margin-top: 20px;
+      padding-bottom: 30px;
     }
   }
 </style>
