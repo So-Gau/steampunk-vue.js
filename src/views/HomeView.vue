@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import Card from "../components/Card.vue";
-  import Slide from "../components/Slide.vue";
+  import Card from "@/components/Card.vue";
+  import Slider from "@/components/Slider.vue";
   import { ref } from 'vue';
   import card5 from '@/assets/card/card5.png';
   import card4 from '@/assets/card/card4.png';
@@ -19,33 +19,43 @@
           imgEmbleme: badge1,
           imgCharactere: card1,
           name: "Heroka",
+          description: 'Lorem ipsum',
         },
         {
           id: 2,
           imgEmbleme: badge2,
           imgCharactere: card2,
           name: "Selena",
+          description: 'Lorem ipsum',
         },
         {
           id: 3,
           imgEmbleme: badge3,
           imgCharactere: card3,
           name: "Fantasy",
+          description: 'Lorem ipsum',
         },
         {
           id: 4,
           imgEmbleme: badge4,
           imgCharactere: card4,
           name: "Clark",
+          description: 'Lorem ipsum',
         },
         {
           id: 5,
           imgEmbleme: badge5,
           imgCharactere: card5,
           name: "Stellar",
+          description: 'Lorem ipsum',
         }
     ]);
-    console.log(characteres)      
+
+    const activeIndex = ref(0);
+
+    const handlePropagation = (index: any) => {
+      activeIndex.value = index;
+    }      
 </script>
 
 <template>
@@ -79,13 +89,13 @@
     <section id="characteres">
       <div class="containerCharactere">
         <ul>
-          <li v-for="charactere in characteres">
-            <Card :id="charactere.id" :name="charactere.name" :image="charactere.imgCharactere" :imgBadge="charactere.imgEmbleme" />
+          <li v-for="(charactere, i) in characteres">
+            <Card v-show="activeIndex === i" :id="charactere.id" :name="charactere.name" :image="charactere.imgCharactere" :imgBadge="charactere.imgEmbleme" />
           </li>
         </ul>
       </div>
       <div class="containerSlide">
-        <Slide v-bind:name="" />
+        <Slider :datas="characteres" @slide-change="handlePropagation" />
       </div>
     </section>
   </div>

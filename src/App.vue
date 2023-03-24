@@ -3,8 +3,6 @@ import { RouterLink, RouterView } from 'vue-router'
 import NavbarMobile from './components/NavbarMobile.vue';
 import main from './styles/main.scss'
 import HomeView from './views/HomeView.vue';
-
-
 </script>
 
 <template>
