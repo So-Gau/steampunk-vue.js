@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper';
 import {computed} from 'vue';
+import { stringLiteral } from '@babel/types';
 
 // init Swiper:
 const modules = [Navigation, Pagination];
@@ -21,20 +22,23 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
-    name: String,
     id: Number,
+    name: String,
+    skill: String,
+    url: String,
 });
 
-const handleSlideChange = (e) => {
+const handleSlideChange = (e: { activeIndex: Number; }) => {
     emit('slide-change', e.activeIndex);
 }
+console.log(handleSlideChange)
 </script>
 
 <template>
     <swiper
     :slidesPerView="1"
-    :spaceBetween="60"
-    :loop="true"
+    :spaceBetween="70"
+    :loop="false"
     :pagination="{
       clickable: true,
     }"
@@ -48,40 +52,67 @@ const handleSlideChange = (e) => {
             <img :src="data.imgEmbleme" alt="">
         </div>
         <div class="skillHeader">
-            <h3>-</h3>
+            <h3>{{ data.skill }}</h3>
         </div>
         <div class="synopsis">
-            <h1>{{ data.name }}</h1>
+            <h2>{{ data.name }}</h2>
             <p>
                 {{ data.description }}
             </p>
         </div>
+        <router-link :to="data.url">Mon histoire</router-link>
     </swiper-slide>
   </swiper>
 </template>
 
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Average&family=Cormorant:wght@300;400;500;600;700&family=Gentium+Book+Plus:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Average&family=Cinzel:wght@400;600;700;800&family=Cormorant:wght@300;400;500;600;700&family=Gentium+Book+Plus:wght@400;700&display=swap');
 #app {
   height: 100%;
 }
 
 .mySwiper {
     padding: 55px 55px 0px 55px;
-
+    &::v-deep(.swiper-button-prev) {
+        width: 68px;
+        height: 44px;
+        &::after {
+            content:url("../assets/form/left.svg");
+            position: relative;
+        }
+    }
+    &::v-deep(.swiper-button-next) {
+        width: 68px;
+        height: 44px;
+        &::after {
+            content:url("../assets/form/right.svg");
+            position: relative;
+        }
+    }
     &::v-deep(.swiper-pagination) {
         position: relative;
         bottom: -6px;
     }
 }
-
 .swiper-slide {
     width: 215px;
-    height: 315px;
+    height: 370px;
     background: radial-gradient(100% 100% at 0% 100%, #4E2F12 0%, #714211 60.49%, #A25502 100%);
     border: 3px solid #EDB571;
     box-shadow: 10px -1px 7px rgba(0, 0, 0, 0.62);
     word-wrap: break-word;
+    .embleme {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translate(-50%);
+        img {
+            box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.45);
+            height: 75px;
+            width: auto;
+            border-radius: 50%;
+        }
+    }
     .skillHeader {
         display: flex;
         align-items: center;
@@ -105,12 +136,21 @@ const handleSlideChange = (e) => {
         font-size: 16px;
         line-height: 19px;
         color: #FFE9CF;
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-family: 'Cinzel';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 38px;
+            color: #FFE9CF;
+        }
+        p {
+            width: 80%;
+            margin: auto;
+        }
     }
 }
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-}
-// pagination
 </style>

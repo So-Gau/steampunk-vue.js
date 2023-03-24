@@ -15,45 +15,55 @@
 
   const characteres = ref([
         {
-          id: 1,
+          id: 0,
           imgEmbleme: badge1,
           imgCharactere: card1,
+          skill: "Assassin",
           name: "Heroka",
-          description: 'Lorem ipsum',
+          description: 'Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum,',
+          url: "/Heroka",
+        },
+        {
+          id: 1,
+          imgEmbleme: badge2,
+          imgCharactere: card2,
+          skill: "Mage",
+          name: "Selena",
+          description: 'Lorem ipsum ',
+          url: "/Selena",
         },
         {
           id: 2,
-          imgEmbleme: badge2,
-          imgCharactere: card2,
-          name: "Selena",
-          description: 'Lorem ipsum',
+          imgEmbleme: badge3,
+          imgCharactere: card3,
+          skill: "Sorcellerie",
+          name: "Fantasy",
+          description: 'Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum, ',
+          url: "/Fantasy",
         },
         {
           id: 3,
-          imgEmbleme: badge3,
-          imgCharactere: card3,
-          name: "Fantasy",
-          description: 'Lorem ipsum',
+          imgEmbleme: badge4,
+          imgCharactere: card4,
+          skill: "Necromancien",
+          name: "Clark",
+          description: 'Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum, ',
+          url: "/Clark",
         },
         {
           id: 4,
-          imgEmbleme: badge4,
-          imgCharactere: card4,
-          name: "Clark",
-          description: 'Lorem ipsum',
-        },
-        {
-          id: 5,
           imgEmbleme: badge5,
           imgCharactere: card5,
+          skill: "Paladin",
           name: "Stellar",
           description: 'Lorem ipsum',
+          url: "/Stellar",
         }
     ]);
 
     const activeIndex = ref(0);
 
-    const handlePropagation = (index: any) => {
+    const handlePropagation = (index: number) => {
       activeIndex.value = index;
     }      
 </script>
@@ -146,7 +156,7 @@
       padding-top: 120px;
     }
     .containerSlide {
-          margin-top: 85px;
+          margin-top: 20px;
     }
   }
 </style>

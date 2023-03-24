@@ -37,9 +37,10 @@
 <style scoped lang="scss">
     .cardBackground {
         width: 215px;
-        height: 315px;
+        height: 370px;
         background: linear-gradient(88.47deg, rgba(141, 84, 30, 0.9) 2.47%, rgba(187, 120, 37, 0.9) 99.9%);
         border: 3px solid #EDB571;
+        box-shadow: 10px -1px 7px rgba(0, 0, 0, 0.62);
         .headerEmbleme {
             height: 55px;
             border-bottom: 2px solid #edb571;
