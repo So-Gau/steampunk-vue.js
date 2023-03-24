@@ -62,7 +62,7 @@ console.log(handleSlideChange)
                 </p>
             </div>
             <div class="text-center">
-                <router-link :to="data.url">Mon Histoire</router-link>
+                <router-link :to="data.url">My Story</router-link>
             </div>
         </div>
     </swiper-slide>
@@ -127,6 +127,7 @@ console.log(handleSlideChange)
             height: 75px;
             width: auto;
             border-radius: 50%;
+            border-top: 3px solid #edb571;
         }
     }
     .skillHeader {
@@ -148,7 +149,7 @@ console.log(handleSlideChange)
     .contentCard {
         display: flex;
         flex-direction: column;
-        height: 285px;
+        height: 292px;
         align-items: center;
         justify-content: space-between;
         .synopsis {
@@ -175,6 +176,7 @@ console.log(handleSlideChange)
             }
         }
         a {
+            display: flex;
             background: linear-gradient(180deg, rgba(66, 49, 44, 0.8) 0%, rgba(9, 4, 5, 0.8) 100%);
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 5px;
