@@ -16,7 +16,7 @@ import HomeView from './views/HomeView.vue';
   padding: 0;
   box-sizing: border-box;
 }
-@media (min-width: 1024px) {
-  
+body {
+  background-color: #f9f4eb;
 }
 </style>
