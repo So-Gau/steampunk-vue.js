@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { email, helpers, required, maxLength } from '@vuelidate/validators'
+import { helpers, required, maxLength } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
+// import { useToast } from "../../node_modules/vue-toastification";
 
+//toast interface
+// const toast = useToast();
+
+// use it!
+// toast.success("My toast content", {
+//         timeout: 2000
+//       });
 // form
 const checkedTerms = ref('')
 const message = ref('')

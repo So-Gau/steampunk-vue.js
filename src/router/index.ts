@@ -29,7 +29,7 @@ const router = createRouter({
       component: SelenaViewVue
     },
     {
-      path: '/Fanstasy',
+      path: '/Fantasy',
       name: 'fantasy',
       component: FantasyViewVue
     },
