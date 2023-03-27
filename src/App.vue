@@ -1,13 +1,29 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import NavbarMobile from './components/NavbarMobile.vue';
-import main from './styles/main.scss'
-import HomeView from './views/HomeView.vue';
+import { useToast } from "vue-toastification";
+
+// import { VueQueryDevTools } from "vue-query/devtools";
+
+// export default defineComponent({
+//   name: "App",
+//   components: { VueQueryDevTools },
+// });
+
+// Get toast interface
+const toast = useToast();
+
+// Use it!
+toast.success("Le formulaire a bien été envoyé", {
+        timeout: 2000
+      });
+
 </script>
 
 <template>
   <NavbarMobile />
   <RouterView />
+  <!-- <VueQueryDevTools /> -->
 </template>
 
 <style scoped>
