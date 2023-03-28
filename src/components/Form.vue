@@ -1,79 +1,87 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { helpers, required, maxLength } from '@vuelidate/validators'
+import { helpers, required, maxLength, sameAs} from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
-// import { useToast } from "../../node_modules/vue-toastification";
+import { useToast } from "vue-toastification";
+import { useSendFormMutation } from "@/hooks/form.query";
 
-//toast interface
-// const toast = useToast();
+    const toast = useToast();
 
-// use it!
-// toast.success("My toast content", {
-//         timeout: 2000
-//       });
-// form
-const checkedTerms = ref('')
-const message = ref('')
-const email = ref('')
-const dateEvent = ref('')
-const selected = ref('')
+    // form
+    const checkedTerms = ref('')
+    const message = ref('')
+    const email = ref('')
+    const dateEvent = ref('')
+    const selected = ref('')
 
-const options = reactive([
-  { id: 0, value: 'correction du site' },
-  { id: 1, value: 'service client' },
-  { id: 2, value: 'problème de paiement' }
-])
+    const options = reactive([
+    { id: 0, value: 'correction du site' },
+    { id: 1, value: 'service client' },
+    { id: 2, value: 'problème de paiement' }
+    ])
 
-const form = reactive({
-    checkedTerms: false, message:'', email:'', selected:'', dateEvent:''
-})
+    const form = reactive({
+        checkedTerms: false, message:'', email:'', selected:'', dateEvent:''
+    })
 
-const rules = {
-    // email: { required, email },
-    email: {
-        required: helpers.withMessage('Remplissez votre champ "mail"', required),
-        maxLength: helpers.withMessage(
-        ({
-            $invalid,
-            $params,
-        }) => `Le mail doit contenir au maximum ${$params.max} caractères, elle est donc ${$invalid ? 'invalid' : 'valid'}`,
-        maxLength(40)
-    )
-    },
-    dateEvent: {
-        required: helpers.withMessage('Selectionnez votre date', required)
-    },
-    selected: { 
-        required: helpers.withMessage('Selectionnez votre thématique', required)
-    },
-    checkedTerms: { 
-        required: helpers.withMessage('la condition est obligatoire, veuillez cocher', required)
+    // validator
+    const rules = {
+        // email: { required, email },
+        email: {
+            required: helpers.withMessage('Remplissez votre champ "mail"', required),
+            maxLength: helpers.withMessage(
+            ({
+                $invalid,
+                $params,
+            }) => `Le mail doit contenir au maximum ${$params.max} caractères, elle est donc ${$invalid ? 'invalid' : 'valid'}`,
+            maxLength(40)
+        )
+        },
+        dateEvent: {
+            required: helpers.withMessage('Selectionnez votre date', required)
+        },
+        selected: { 
+            required: helpers.withMessage('Selectionnez votre thématique', required)
+        },
+        checkedTerms: { 
+            sameAs: helpers.withMessage("required", sameAs(true))
+        }
     }
-}
+    const v$ = useVuelidate(rules, form)
 
-const v$ = useVuelidate(rules, form)
+    // isError et isSucces a utilisé uniquement si il n'y a pas de toast, en l'occurence elle n'est pas obligatoire dans ce code
+    const { mutateAsync, isError, isSuccess } = useSendFormMutation();
+    const sendForm = () => {
+        mutateAsync(form)
+        .then((res) => toast.success("Le formulaire a bien été envoyé", {
+            timeout: 2000,
+            pauseOnFocusLoss: true,
+            pauseOnHover: true,
+            draggable: true,
+            draggablePercent: 0.6,
+            showCloseButtonOnHover: false,
+            hideProgressBar: true,
+            closeButton: "button",
+            icon: true,
+        }))
+        .catch((res) => toast.error("le formulaire n'est pas valide", {
+            timeout: 2000
+        }));
+    }
 
-
-const checkForm = async (e) => {
-// if (email && dateEvent) {
-//     return true
-// }
-// this.errors = [];
-
-// if (!this.name) {
-//   this.errors.push('Name required.');
-// }
-// if (!this.age) {
-//   this.errors.push('Age required.');
-// }
-
-// e.preventDefault();
-console.log(form)
-const isFormCorrect = await v$.value.$validate()
-      // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
-      if (!isFormCorrect) return alert("formulaire incorrect ")
-      alert("formulaire correct")
-}
+    const checkForm = async (e) => {
+    console.log(form)
+    const isFormCorrect = await v$.value.$validate()
+    if(isFormCorrect) {
+        sendForm()
+    }
+        // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
+        // if (!isFormCorrect) return toast.error("le formulaire n'est pas valide", {
+        //     timeout: 2000
+        // });
+       
+      
+    }
 </script>
 
 <template>
